@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{{list.name}}</h1>
+    <form method="post" action="#" class="form-class form-group">
+        {% csrf_token %}
+        {% for item in list.item_set.all %}
+        <div class="input-group mb-3">
+                <div class="input-group-text" id="basic-addon1">
+                    {% if item.complete == True%}
+                        <input class="form-check-input mt-0" type="checkbox" value="clicked" name="c{{item.id}}" checked> 
+                    {% else %}
+                        <input class="form-check-input mt-0" type="checkbox" value="clicked" name="c{{item.id}}">
+                    {% endif %}
+                </div>
+            <input type="text" value="{{item.text}}" class="form-control">
+        </div>
+        {% endfor %}
+    
+    <div class="input-group mb-3">
+    <button type="submit" name="newItem" value="newItem" class="btn btn-success" id="button-addon1">Add Item</button> 
+    <input type="text" name="new" class="form-control" aria-describedby="button-addon1">
+</div>
+    <button type="submit" name="save" value="save" class="btn btn-success" id="button-addon2">Update List</button>
+</form>
+</form>
+{% endblock %}

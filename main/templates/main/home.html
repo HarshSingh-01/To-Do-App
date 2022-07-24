@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1>Home Page</h1>
+<br>
+{% if userStatus %}
+    <h4> Hi, {{user}}</h4>   
+{% else %}
+<p>New user? Create free account <a href="/register">here</a></p>
+{% endif %}
+{% endblock %}
+
